@@ -1,0 +1,770 @@
+{
+	"info": {
+		"_postman_id": "743f3a32-35d4-d575-c02c-c0db708e030f",
+		"name": "API Training",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ServiceNow Application",
+			"item": [
+				{
+					"name": "Incidents",
+					"item": [
+						{
+							"name": "Getting All Incidents",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "bd5f94d4-eaf6-43d5-920d-dfb9ec70bef6",
+										"exec": [
+											"pm.test(\"Response time is less than 1000ms\", function () {\r",
+											"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://dev65011.service-now.com/api/now/table/incident",
+									"protocol": "https",
+									"host": [
+										"dev65011",
+										"service-now",
+										"com"
+									],
+									"path": [
+										"api",
+										"now",
+										"table",
+										"incident"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Incident",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "https://dev65011.service-now.com/api/now/table/incident",
+									"protocol": "https",
+									"host": [
+										"dev65011",
+										"service-now",
+										"com"
+									],
+									"path": [
+										"api",
+										"now",
+										"table",
+										"incident"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Incident with body params",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\"short_description\":\"Created through Postman\",\r\n\"caller_id\":\"Abel Tuter\",\r\n\"category\":\"Testing\"}"
+								},
+								"url": {
+									"raw": "https://dev65011.service-now.com/api/now/table/incident",
+									"protocol": "https",
+									"host": [
+										"dev65011",
+										"service-now",
+										"com"
+									],
+									"path": [
+										"api",
+										"now",
+										"table",
+										"incident"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "d43d7ed6-d867-4dd0-9fed-a6a8eb008522",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "152a7f9e-08cf-408f-bc84-778feccf1db4",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test(\"Response time is less than 1000ms\", function () {",
+									"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+									"});"
+								]
+							}
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "ChangeRequests",
+					"item": [
+						{
+							"name": "Gettting first 20 Change Requests with limited param",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "Amar@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "https://dev65011.service-now.com/api/now/table/change_request?sysparm_fields=number,short_description,sys_id&sysparm_limit=20",
+									"protocol": "https",
+									"host": [
+										"dev65011",
+										"service-now",
+										"com"
+									],
+									"path": [
+										"api",
+										"now",
+										"table",
+										"change_request"
+									],
+									"query": [
+										{
+											"key": "sysparm_fields",
+											"value": "number,short_description,sys_id"
+										},
+										{
+											"key": "sysparm_limit",
+											"value": "20"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Change Request without Body",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "Amar@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "",
+										"value": "",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "https://dev65011.service-now.com/api/now/table/change_request",
+									"protocol": "https",
+									"host": [
+										"dev65011",
+										"service-now",
+										"com"
+									],
+									"path": [
+										"api",
+										"now",
+										"table",
+										"change_request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create New Change Request with Body",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "Amar@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/xml",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"short_description\" : \"created through Postman\",\r\n    \"type\" : \"emergency\"\r\n}"
+								},
+								"url": {
+									"raw": "https://dev65011.service-now.com/api/now/table/change_request",
+									"protocol": "https",
+									"host": [
+										"dev65011",
+										"service-now",
+										"com"
+									],
+									"path": [
+										"api",
+										"now",
+										"table",
+										"change_request"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Modify a Change Request Record",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "3f99c78f-932f-44ba-8d26-790276bf5a15",
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "Amar@123",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n    \"short_description\" : \"updated through Postman from changing type to Emergency from Standard\",\r\n    \"type\" : \"emergency\"\r\n}"
+								},
+								"url": {
+									"raw": "https://dev65011.service-now.com/api/now/table/change_request/73671840db221010a6f314613996191f",
+									"protocol": "https",
+									"host": [
+										"dev65011",
+										"service-now",
+										"com"
+									],
+									"path": [
+										"api",
+										"now",
+										"table",
+										"change_request",
+										"73671840db221010a6f314613996191f"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "Amar@123",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "admin",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "5a9e33d6-74a2-4543-9889-a29e16106203",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7e7db3df-d924-4a70-88a9-96b0a37265ab",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "JIRA Application",
+			"item": [
+				{
+					"name": "Create New JIRA Ticket",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fields\": {\r\n       \"project\":\r\n       {\r\n          \"key\": \"RA\"\r\n       },\r\n       \"summary\": \"New Defect Using Postman\",\r\n       \"description\": \"Creating defect using Postman based on documentation\",\r\n       \"issuetype\": {\r\n          \"name\": \"Bug\"\r\n       }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-may2020.atlassian.net/rest/api/2/issue/",
+							"protocol": "https",
+							"host": [
+								"api-may2020",
+								"atlassian",
+								"net"
+							],
+							"path": [
+								"rest",
+								"api",
+								"2",
+								"issue",
+								""
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "RA",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create New JIRA Task",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fields\": {\r\n       \"project\":\r\n       {\r\n          \"key\": \"RA\"\r\n       },\r\n       \"summary\": \"New Task Using Postman\",\r\n       \"description\": \"Creation of New Task using Postman based on documentation\",\r\n       \"issuetype\": {\r\n          \"name\": \"Task\"\r\n       }\r\n   }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-may2020.atlassian.net/rest/api/2/issue/",
+							"protocol": "https",
+							"host": [
+								"api-may2020",
+								"atlassian",
+								"net"
+							],
+							"path": [
+								"rest",
+								"api",
+								"2",
+								"issue",
+								""
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "RA",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Available Issue Types in JIRA",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-may2020.atlassian.net/rest/api/2/issuetype",
+							"protocol": "https",
+							"host": [
+								"api-may2020",
+								"atlassian",
+								"net"
+							],
+							"path": [
+								"rest",
+								"api",
+								"2",
+								"issuetype"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "RA",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Issues from JIRA Project",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "issues",
+								"value": "id,key",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-may2020.atlassian.net/rest/api/2/search?maxResults=20&jql-project=”RA”\n",
+							"protocol": "https",
+							"host": [
+								"api-may2020",
+								"atlassian",
+								"net"
+							],
+							"path": [
+								"rest",
+								"api",
+								"2",
+								"search"
+							],
+							"query": [
+								{
+									"key": "maxResults",
+									"value": "20"
+								},
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								},
+								{
+									"key": "jql-project",
+									"value": "”RA”\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Issues from JIRA Project with params and limited fields",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"type": "text",
+								"value": "application/json"
+							},
+							{
+								"key": "issues",
+								"type": "text",
+								"value": "id,key",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-may2020.atlassian.net/rest/api/2/search?maxResults=5&fields=summary,comment,creator&jql-project=”RA”\n",
+							"protocol": "https",
+							"host": [
+								"api-may2020",
+								"atlassian",
+								"net"
+							],
+							"path": [
+								"rest",
+								"api",
+								"2",
+								"search"
+							],
+							"query": [
+								{
+									"key": "maxResults",
+									"value": "5"
+								},
+								{
+									"key": "fields",
+									"value": "summary,comment,creator"
+								},
+								{
+									"key": "jql-project",
+									"value": "”RA”\n"
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Issue Types with Invalid Authentication",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "60beSkCr05XHzsMLUfVYD8A7xxxxx",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "hari.radhakrishnan@testleaf.com",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api-may2020.atlassian.net/rest/api/2/issuetype",
+							"protocol": "https",
+							"host": [
+								"api-may2020",
+								"atlassian",
+								"net"
+							],
+							"path": [
+								"rest",
+								"api",
+								"2",
+								"issuetype"
+							],
+							"query": [
+								{
+									"key": "key",
+									"value": "RA",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "60beSkCr05XHzsMLUfVYD8A7",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "hari.radhakrishnan@testleaf.com",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "ff8fb73f-7e19-48ce-b247-ec5d93539ef2",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "d3652e49-09e8-4209-b80a-4e82fc62922c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
